@@ -1,0 +1,31 @@
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:                 Salary   R-squared:                       0.696
+Model:                            OLS   Adj. R-squared:                  0.691
+Method:                 Least Squares   F-statistic:                     136.7
+Date:                Tue, 21 Apr 2026   Prob (F-statistic):          6.58e-104
+Time:                        23:59:09   Log-Likelihood:                -4984.8
+No. Observations:                 426   AIC:                             9986.
+Df Residuals:                     418   BIC:                         1.002e+04
+Df Model:                           7                                         
+Covariance Type:            nonrobust                                         
+===========================================================================================================================================
+                                                                              coef    std err          t      P>|t|      [0.025      0.975]
+-------------------------------------------------------------------------------------------------------------------------------------------
+Intercept                                                                6.519e+04   1.44e+04      4.526      0.000    3.69e+04    9.35e+04
+C(Gender, Treatment(reference='Female'))[T.Male]                         5326.1454   2900.724      1.836      0.067    -375.679     1.1e+04
+C(Gender, Treatment(reference='Female'))[T.Other]                       -2.777e+04   3.09e+04     -0.900      0.369   -8.84e+04    3.29e+04
+C(Q('Education Level'), Treatment(reference='High School'))[T.Bachelor]  3.645e+04   5651.243      6.450      0.000    2.53e+04    4.76e+04
+C(Q('Education Level'), Treatment(reference='High School'))[T.Master]    4.855e+04   6058.851      8.013      0.000    3.66e+04    6.05e+04
+C(Q('Education Level'), Treatment(reference='High School'))[T.PhD]       5.721e+04   6913.707      8.274      0.000    4.36e+04    7.08e+04
+Age                                                                     -1659.9797    544.194     -3.050      0.002   -2729.677    -590.282
+Q('Years of Experience')                                                 7282.2568    652.505     11.160      0.000    5999.656    8564.857
+==============================================================================
+Omnibus:                       20.950   Durbin-Watson:                   1.807
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):               22.659
+Skew:                           0.550   Prob(JB):                     1.20e-05
+Kurtosis:                       3.255   Cond. No.                         784.
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.

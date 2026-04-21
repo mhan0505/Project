@@ -1,0 +1,26 @@
+model,variable,vif
+model1_level_level,Q('Years of Experience'),8.801253303577255
+model1_level_level,Age,8.692773485406631
+model1_level_level,"C(Q('Education Level'), Treatment(reference='High School'))[T.Bachelor]",3.8202181770396337
+model1_level_level,"C(Q('Education Level'), Treatment(reference='High School'))[T.PhD]",3.770797724844082
+model1_level_level,"C(Q('Education Level'), Treatment(reference='High School'))[T.Master]",3.7074731973121464
+model1_level_level,"C(Gender, Treatment(reference='Female'))[T.Other]",1.0926639193364485
+model1_level_level,"C(Gender, Treatment(reference='Female'))[T.Male]",1.0225822154537654
+model2_log_level,Q('Years of Experience'),8.801253303577255
+model2_log_level,Age,8.692773485406631
+model2_log_level,"C(Q('Education Level'), Treatment(reference='High School'))[T.Bachelor]",3.8202181770396337
+model2_log_level,"C(Q('Education Level'), Treatment(reference='High School'))[T.PhD]",3.770797724844082
+model2_log_level,"C(Q('Education Level'), Treatment(reference='High School'))[T.Master]",3.7074731973121464
+model2_log_level,"C(Gender, Treatment(reference='Female'))[T.Other]",1.0926639193364485
+model2_log_level,"C(Gender, Treatment(reference='Female'))[T.Male]",1.0225822154537654
+model3_log_level_extended,Exp_x_PhD,27.953591359926772
+model3_log_level_extended,Q('Years of Experience'),24.214559587416286
+model3_log_level_extended,Exp_x_Master,14.980954129076286
+model3_log_level_extended,"C(Q('Education Level'), Treatment(reference='High School'))[T.PhD]",10.179129733556108
+model3_log_level_extended,Exp_x_Bachelor,9.929414782101514
+model3_log_level_extended,Age_c,9.214785971472207
+model3_log_level_extended,"C(Q('Education Level'), Treatment(reference='High School'))[T.Master]",6.722032314824851
+model3_log_level_extended,"C(Q('Education Level'), Treatment(reference='High School'))[T.Bachelor]",5.466393085505499
+model3_log_level_extended,Age2_c,2.3762170225464048
+model3_log_level_extended,"C(Gender, Treatment(reference='Female'))[T.Other]",1.797548581911342
+model3_log_level_extended,"C(Gender, Treatment(reference='Female'))[T.Male]",1.0273730856268386
