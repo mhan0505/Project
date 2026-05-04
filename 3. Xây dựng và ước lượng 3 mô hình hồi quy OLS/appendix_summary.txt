@@ -1,0 +1,86 @@
+=== Appendix A: Model 1 (Linear) Summary Output ===
+Dep. Variable : Salary
+
+Regression Statistics
+  Multiple R            0.8347
+  R Square              0.6968
+  Adjusted R Square     0.6917
+  Standard Error        29328.1480
+  Observations          425
+
+ANOVA
+                    df                SS                MS           F  Significance F
+  Regression         7  824120516974.7051  117731502424.9579    136.8748          0.0000
+  Residual         417  358678489624.5044    860140262.8885
+  Total            424  1182799006599.2095
+
+  Variable                               Coeff     Std Error      t Stat     P-value     Lower 95%     Upper 95%
+  --------------------------------------------------------------------------------------------------------
+  Intercept                         63493.0024    15644.4781      4.0585      0.0001    32741.1344    94244.8704
+  Gender (Male)                      5602.1453     2957.2963      1.8943      0.0589     -210.9208    11415.2115
+  Gender (Other)                   -26771.0741   355923.3693     -0.0752      0.9401  -726398.6612   672856.5131
+  Bachelor                          36908.3192     2924.8926     12.6187      0.0000    31158.9481    42657.6904
+  Master                            48751.3808     3897.0683     12.5098      0.0000    41091.0339    56411.7278
+  PhD                               57442.7895     5206.1631     11.0336      0.0000    47209.1953    67676.3836
+  Age                               -1593.6483      629.4206     -2.5319      0.0117    -2830.8809     -356.4157
+  Years of Experience                7182.7958      837.3830      8.5777      0.0000     5536.7779     8828.8137
+
+
+=== Appendix B: Model 2 (Semi-Log) Summary Output ===
+Dep. Variable : ln(Salary)
+
+Regression Statistics
+  Multiple R            0.8446
+  R Square              0.7133
+  Adjusted R Square     0.7085
+  Standard Error        0.2995
+  Observations          425
+
+ANOVA
+                    df                SS                MS           F  Significance F
+  Regression         7           93.0766           13.2967    148.2380          0.0000
+  Residual         417           37.4041            0.0897
+  Total            424          130.4807
+
+  Variable                               Coeff     Std Error      t Stat     P-value     Lower 95%     Upper 95%
+  --------------------------------------------------------------------------------------------------------
+  Intercept                            10.7187        0.1532     69.9483      0.0000       10.4175       11.0199
+  Gender (Male)                         0.0629        0.0304      2.0725      0.0388        0.0032        0.1226
+  Gender (Other)                        0.1073       60.0001      0.0018      0.9986     -117.8331      118.0477
+  Bachelor                              0.6943        0.0506     13.7192      0.0000        0.5948        0.7937
+  Master                                0.8468        0.0556     15.2313      0.0000        0.7375        0.9560
+  PhD                                   0.8554        0.0641     13.3347      0.0000        0.7293        0.9815
+  Age                                  -0.0158        0.0058     -2.7458      0.0063       -0.0271       -0.0045
+  Years of Experience                   0.0691        0.0082      8.4665      0.0000        0.0531        0.0852
+
+
+=== Appendix C: Model 3 (Quadratic - Final) Summary Output ===
+Dep. Variable : ln(Salary)
+
+Regression Statistics
+  Multiple R            0.8651
+  R Square              0.7485
+  Adjusted R Square     0.7418
+  Standard Error        0.2819
+  Observations          425
+
+ANOVA
+                    df                SS                MS           F  Significance F
+  Regression        11           97.6615            8.8783    111.7255          0.0000
+  Residual         413           32.8192            0.0795
+  Total            424          130.4807
+
+  Variable                               Coeff     Std Error      t Stat     P-value     Lower 95%     Upper 95%
+  --------------------------------------------------------------------------------------------------------
+  Intercept                            10.2644        0.0696    147.4113      0.0000       10.1275       10.4013
+  Gender (Male)                         0.0549        0.0282      1.9444      0.0525       -0.0006        0.1104
+  Gender (Other)                       -0.1600       48.8535     -0.0033      0.9974      -96.1925       95.8726
+  Bachelor                              0.6185        0.0623      9.9331      0.0000        0.4961        0.7409
+  Master                                0.8575        0.0792     10.8220      0.0000        0.7017        1.0133
+  PhD                                   1.0627        0.1397      7.6068      0.0000        0.7881        1.3373
+  Age (centred)                        -0.0078        0.0066     -1.1776      0.2396       -0.0208        0.0052
+  Age² (centred)                       -0.0009        0.0003     -2.6405      0.0086       -0.0016       -0.0002
+  Years of Experience                   0.0827        0.0073     11.3256      0.0000        0.0683        0.0970
+  Bachelor × Experience                -0.0034        0.0081     -0.4204      0.6744       -0.0194        0.0126
+  Master × Experience                  -0.0199        0.0067     -2.9604      0.0032       -0.0331       -0.0067
+  PhD × Experience                     -0.0291        0.0093     -3.1427      0.0018       -0.0474       -0.0109

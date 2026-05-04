@@ -1,0 +1,31 @@
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:               lnSalary   R-squared:                       0.713
+Model:                            OLS   Adj. R-squared:                  0.709
+Method:                 Least Squares   F-statistic:                     158.1
+Date:                Tue, 05 May 2026   Prob (F-statistic):          3.99e-113
+Time:                        03:42:05   Log-Likelihood:                -86.608
+No. Observations:                 425   AIC:                             189.2
+Df Residuals:                     417   BIC:                             221.6
+Df Model:                           7                                         
+Covariance Type:                  HC3                                         
+================================================================================================================================
+                                                                   coef    std err          t      P>|t|      [0.025      0.975]
+--------------------------------------------------------------------------------------------------------------------------------
+Intercept                                                       10.7187      0.153     69.948      0.000      10.417      11.020
+C(Gender, Treatment(reference="Female"))[T.Male]                 0.0629      0.030      2.073      0.039       0.003       0.123
+C(Gender, Treatment(reference="Female"))[T.Other]                0.1073     60.000      0.002      0.999    -117.833     118.048
+C(Education, Treatment(reference="High School"))[T.Bachelor]     0.6943      0.051     13.719      0.000       0.595       0.794
+C(Education, Treatment(reference="High School"))[T.Master]       0.8468      0.056     15.231      0.000       0.737       0.956
+C(Education, Treatment(reference="High School"))[T.PhD]          0.8554      0.064     13.335      0.000       0.729       0.981
+Age                                                             -0.0158      0.006     -2.746      0.006      -0.027      -0.004
+Experience                                                       0.0691      0.008      8.466      0.000       0.053       0.085
+==============================================================================
+Omnibus:                        0.305   Durbin-Watson:                   1.748
+Prob(Omnibus):                  0.858   Jarque-Bera (JB):                0.184
+Skew:                          -0.040   Prob(JB):                        0.912
+Kurtosis:                       3.062   Cond. No.                         783.
+==============================================================================
+
+Notes:
+[1] Standard Errors are heteroscedasticity robust (HC3)

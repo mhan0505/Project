@@ -3,8 +3,8 @@
 Dep. Variable:                 Salary   R-squared:                       0.697
 Model:                            OLS   Adj. R-squared:                  0.692
 Method:                 Least Squares   F-statistic:                     136.9
-Date:                Wed, 22 Apr 2026   Prob (F-statistic):          7.07e-104
-Time:                        00:36:50   Log-Likelihood:                -4970.7
+Date:                Tue, 05 May 2026   Prob (F-statistic):          7.07e-104
+Time:                        03:41:21   Log-Likelihood:                -4970.7
 No. Observations:                 425   AIC:                             9957.
 Df Residuals:                     417   BIC:                             9990.
 Df Model:                           7                                         
