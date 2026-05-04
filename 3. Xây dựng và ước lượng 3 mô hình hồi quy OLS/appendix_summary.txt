@@ -1,4 +1,4 @@
-=== Appendix A: Model 1 (Linear) Summary Output ===
+=== Model 1 (Linear) Summary Output ===
 Dep. Variable : Salary
 
 Regression Statistics
@@ -26,7 +26,7 @@ ANOVA
   Years of Experience                7182.7958      837.3830      8.5777      0.0000     5536.7779     8828.8137
 
 
-=== Appendix B: Model 2 (Semi-Log) Summary Output ===
+=== Model 2 (Semi-Log) Summary Output ===
 Dep. Variable : ln(Salary)
 
 Regression Statistics
@@ -54,7 +54,7 @@ ANOVA
   Years of Experience                   0.0691        0.0082      8.4665      0.0000        0.0531        0.0852
 
 
-=== Appendix C: Model 3 (Quadratic - Final) Summary Output ===
+=== Model 3 (Quadratic - Final) Summary Output ===
 Dep. Variable : ln(Salary)
 
 Regression Statistics
@@ -84,3 +84,7 @@ ANOVA
   Bachelor × Experience                -0.0034        0.0081     -0.4204      0.6744       -0.0194        0.0126
   Master × Experience                  -0.0199        0.0067     -2.9604      0.0032       -0.0331       -0.0067
   PhD × Experience                     -0.0291        0.0093     -3.1427      0.0018       -0.0474       -0.0109
+
+
+=== JOINT F-TESTS (HC3 Robust) ===
+Joint F-test (Agec, Agec2): F(2.0, 413.0) = 3.8967, p = 0.0211

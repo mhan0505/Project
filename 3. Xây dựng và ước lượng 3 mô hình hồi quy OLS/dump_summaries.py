@@ -95,10 +95,15 @@ def print_excel_style(model, name, dep_var_label):
     return "\n".join(out)
 
 with open('appendix_summary.txt', 'w', encoding='utf-8') as f:
-    f.write(print_excel_style(m1, "Appendix A: Model 1 (Linear) Summary Output", "Salary"))
+    f.write(print_excel_style(m1, "Model 1 (Linear) Summary Output", "Salary"))
     f.write("\n\n")
-    f.write(print_excel_style(m2, "Appendix B: Model 2 (Semi-Log) Summary Output", "ln(Salary)"))
+    f.write(print_excel_style(m2, "Model 2 (Semi-Log) Summary Output", "ln(Salary)"))
     f.write("\n\n")
-    f.write(print_excel_style(m3, "Appendix C: Model 3 (Quadratic - Final) Summary Output", "ln(Salary)"))
+    f.write(print_excel_style(m3, "Model 3 (Quadratic - Final) Summary Output", "ln(Salary)"))
+    f.write("\n\n")
+    f.write("=== JOINT F-TESTS (HC3 Robust) ===\n")
+    m3_hc3 = m3.get_robustcov_results(cov_type='HC3')
+    f_age = m3_hc3.f_test("Agec = 0, Agec2 = 0")
+    f.write(f"Joint F-test (Agec, Agec2): F({f_age.df_num}, {f_age.df_denom}) = {f_age.fvalue:.4f}, p = {f_age.pvalue:.4f}\n")
 
 print("Done — appendix_summary.txt written")

@@ -566,7 +566,7 @@ Gender becomes statistically significant in this model. The coefficient on the m
 \vspace{1em}
 \textbf{Model 3 (Extended Log Model)}\\
 Model 3 introduces nonlinear age effects and interaction terms.
-The squared age term (\(\text{Age}_c^2\)) is negative and statistically significant, indicating a concave relationship between age and log salary within this specification. Although the linear term $\text{Age}_c$ is not individually significant, a joint F-test for $H_0\!: \beta_{\text{Age}_c} = \beta_{\text{Age}_c^2} = 0$ yields $F(2, 413) = 3.90$ ($p = 0.021$), confirming that the age polynomial jointly contributes significant explanatory power at the 5\% level. The age profile should therefore be interpreted based on the joint test rather than the individual coefficient alone.
+The squared age term (\(\text{Age}_c^2\)) is negative and statistically significant, indicating a concave relationship between age and log salary within this specification. Although the linear term $\text{Age}_c$ is not individually significant, a joint F-test (using the HC3 robust covariance matrix) for $H_0\!: \beta_{\text{Age}_c} = \beta_{\text{Age}_c^2} = 0$ yields $F(2, 413) = 3.90$ ($p = 0.021$), confirming that the age polynomial jointly contributes significant explanatory power at the 5\% level. The age profile should therefore be interpreted based on the joint test rather than the individual coefficient alone.
 Years of experience remains strongly positive and significant (approximately 8.27\% per additional year for the baseline education group).
 The interaction terms suggest that:
 \begin{itemize}
@@ -1042,7 +1042,10 @@ EDUCATION_MAP = {
 }
 
 def normalize_education(value):
-    key = str(value).strip().lower().replace("'", "'").replace("'", "'")
+    # Standardise apostrophes (e.g. curly quotes to straight)
+    key = str(value).strip().lower()
+    for char in ["’", "‘", "`", "´", "ʼ"]:
+        key = key.replace(char, "'")
     if key in EDUCATION_MAP:
         return EDUCATION_MAP[key]
     raise ValueError(f"Unexpected education value: {value!r}")
@@ -1076,7 +1079,7 @@ print("Saved: Group13_DSEB66A_part1_cleaned.xlsx")
 import pandas as pd
 import numpy as np
 import statsmodels.formula.api as smf
-from statsmodels.compat.python import lzip
+from scipy import stats
 
 # --- Load cleaned data (n=425): apply hybrid IQR + log-modified z-score outlier rule ---
 df = pd.read_excel('Group13_DSEB66A_part1_cleaned.xlsx')
@@ -1118,16 +1121,16 @@ m3 = smf.ols('lnSalary ~ Agec + Agec2 + Experience'
 print(m3.get_robustcov_results(cov_type='HC3').summary())
 print(f'AIC: {m3.aic:.2f}  BIC: {m3.bic:.2f}')
 
-# --- F-test: Model 2 vs Model 3 (nested) ---
-from scipy import stats
+# --- F-test: Model 2 vs Model 3 (nested, Robust) ---
 RSS2, RSS3 = sum(m2.resid**2), sum(m3.resid**2)
 q = m3.df_model - m2.df_model
-F = ((RSS2 - RSS3)/q) / (RSS3/(len(df) - m3.df_model - 1))
-p = 1 - stats.f.cdf(F, q, len(df) - m3.df_model - 1)
-print(f'F-test M2 vs M3: F({int(q)},{int(len(df)-m3.df_model-1)}) = {F:.4f}, p = {p:.6f}')
+F_nested = ((RSS2 - RSS3)/q) / (RSS3/(len(df) - m3.df_model - 1))
+p_nested = 1 - stats.f.cdf(F_nested, q, len(df) - m3.df_model - 1)
+print(f'F-test M2 vs M3: F({int(q)},{int(len(df)-m3.df_model-1)}) = {F_nested:.4f}, p = {p_nested:.6f}')
 
-# --- Joint F-test for Age terms in Model 3 ---
-f_age = m3.f_test("Agec = 0, Agec2 = 0")
+# --- Joint F-test for Age terms in Model 3 (HC3 Robust) ---
+m3_hc3 = m3.get_robustcov_results(cov_type='HC3')
+f_age = m3_hc3.f_test("Agec = 0, Agec2 = 0")
 print(f'Joint test Age: F({f_age.df_num},{f_age.df_denom}) = {f_age.fvalue:.4f}, p = {f_age.pvalue:.4f}')
 \end{lstlisting}
 
