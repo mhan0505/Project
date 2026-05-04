@@ -839,30 +839,115 @@ Wooldridge, J.~M. (2010).
 \section{Supplementary Materials}
 \label{app:supp}
 
-\subsection{Appendix A: Full Regression Output}
-\begin{table}[htpb]
-\centering
-\scriptsize
-\caption{Model 2 HC3 Regression Output}
-\begin{tabular}{lrrrrr}
-\toprule
-\textbf{Variable} & \textbf{Coef.} & \textbf{SE} & \textbf{t} & \textbf{p-value} & \textbf{95\% CI} \\
-\midrule
-Intercept & 10.7187 & 0.153 & 69.948 & 0.000 & [10.417, 11.020] \\
-Male & 0.0629 & 0.030 & 2.073 & 0.039 & [0.003, 0.123] \\
-Other & 0.1073 & 58.857 & 0.002 & 0.999 & [-115.587, 115.801] \\
-Bachelor & 0.6943 & 0.051 & 13.719 & 0.000 & [0.595, 0.794] \\
-Master & 0.8468 & 0.056 & 15.231 & 0.000 & [0.737, 0.956] \\
-PhD & 0.8554 & 0.064 & 13.335 & 0.000 & [0.729, 0.981] \\
-Age & -0.0158 & 0.006 & -2.746 & 0.006 & [-0.027, -0.004] \\
-Experience & 0.0691 & 0.008 & 8.466 & 0.000 & [0.053, 0.085] \\
-\bottomrule
-\end{tabular}
-\end{table}
+\subsection{Appendix A: Model 1 (Linear) Summary Output}
+\begin{verbatim}
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:                 Salary   R-squared:                       0.697
+Model:                            OLS   Adj. R-squared:                  0.692
+Method:                 Least Squares   F-statistic:                     263.2
+Date:                Tue, 05 May 2026   Prob (F-statistic):          1.13e-148
+Time:                        03:42:05   Log-Likelihood:                -4970.7
+No. Observations:                 425   AIC:                             9957.
+Df Residuals:                     417   BIC:                             9990.
+Df Model:                           7                                         
+Covariance Type:                  HC3                                         
+================================================================================================================================
+                                                                   coef    std err          t      P>|t|      [0.025      0.975]
+--------------------------------------------------------------------------------------------------------------------------------
+Intercept                                                     6.349e+04   1.56e+04      4.058      0.000    3.27e+04    9.42e+04
+C(Gender, Treatment(reference="Female"))[T.Male]              5602.1453   2957.296      1.894      0.059    -210.921    1.14e+04
+C(Gender, Treatment(reference="Female"))[T.Other]            -2.677e+04   3.56e+05     -0.075      0.940   -7.26e+05    6.73e+05
+C(Education, Treatment(reference="High School"))[T.Bachelor]  3.691e+04   2924.893     12.619      0.000    3.12e+04    4.27e+04
+C(Education, Treatment(reference="High School"))[T.Master]    4.875e+04   3897.068     12.510      0.000    4.11e+04    5.64e+04
+C(Education, Treatment(reference="High School"))[T.PhD]       5.744e+04   5206.163     11.034      0.000    4.72e+04    6.77e+04
+Age                                                          -1593.6483    629.421     -2.532      0.012   -2830.881    -356.416
+Experience                                                    7182.7958    837.383      8.578      0.000    5536.778    8828.814
+==============================================================================
+Omnibus:                       22.778   Durbin-Watson:                   1.738
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):               24.977
+Skew:                           0.583   Prob(JB):                     3.77e-06
+Kurtosis:                       3.224   Cond. No.                         783.
+==============================================================================
 
-\noindent\textit{Model summary:} $R^2 = 0.713$, adjusted $R^2 = 0.709$, $F = 158.1$, $p < 0.001$, AIC $= 189.2$, BIC $= 221.6$, $n = 425$, HC3 robust SE, Jarque--Bera $= 0.184$ ($p = 0.912$), Durbin--Watson $= 1.748$.
+Notes:
+[1] Standard Errors are heteroscedasticity robust (HC3)\end{verbatim}
 
-\subsection{Appendix B: Outlier Report (Filtered)}
+\subsection{Appendix B: Model 2 (Semi-Log) Summary Output}
+\begin{verbatim}
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:               lnSalary   R-squared:                       0.713
+Model:                            OLS   Adj. R-squared:                  0.709
+Method:                 Least Squares   F-statistic:                     158.1
+Date:                Tue, 05 May 2026   Prob (F-statistic):          3.99e-113
+Time:                        03:42:05   Log-Likelihood:                -86.608
+No. Observations:                 425   AIC:                             189.2
+Df Residuals:                     417   BIC:                             221.6
+Df Model:                           7                                         
+Covariance Type:                  HC3                                         
+================================================================================================================================
+                                                                   coef    std err          t      P>|t|      [0.025      0.975]
+--------------------------------------------------------------------------------------------------------------------------------
+Intercept                                                       10.7187      0.153     69.948      0.000      10.417      11.020
+C(Gender, Treatment(reference="Female"))[T.Male]                 0.0629      0.030      2.073      0.039       0.003       0.123
+C(Gender, Treatment(reference="Female"))[T.Other]                0.1073     60.000      0.002      0.999    -117.833     118.048
+C(Education, Treatment(reference="High School"))[T.Bachelor]     0.6943      0.051     13.719      0.000       0.595       0.794
+C(Education, Treatment(reference="High School"))[T.Master]       0.8468      0.056     15.231      0.000       0.737       0.956
+C(Education, Treatment(reference="High School"))[T.PhD]          0.8554      0.064     13.335      0.000       0.729       0.981
+Age                                                             -0.0158      0.006     -2.746      0.006      -0.027      -0.004
+Experience                                                       0.0691      0.008      8.466      0.000       0.053       0.085
+==============================================================================
+Omnibus:                        0.305   Durbin-Watson:                   1.748
+Prob(Omnibus):                  0.858   Jarque-Bera (JB):                0.184
+Skew:                          -0.040   Prob(JB):                        0.912
+Kurtosis:                       3.062   Cond. No.                         783.
+==============================================================================
+
+Notes:
+[1] Standard Errors are heteroscedasticity robust (HC3)\end{verbatim}
+
+\subsection{Appendix C: Model 3 (Quadratic - Final) Summary Output}
+\begin{verbatim}
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:               lnSalary   R-squared:                       0.748
+Model:                            OLS   Adj. R-squared:                  0.742
+Method:                 Least Squares   F-statistic:                     155.6
+Date:                Tue, 05 May 2026   Prob (F-statistic):          2.67e-139
+Time:                        03:42:05   Log-Likelihood:                -58.821
+No. Observations:                 425   AIC:                             141.6
+Df Residuals:                     413   BIC:                             190.3
+Df Model:                          11                                         
+Covariance Type:                  HC3                                         
+===========================================================================================================================================
+                                                                              coef    std err          t      P>|t|      [0.025      0.975]
+-------------------------------------------------------------------------------------------------------------------------------------------
+Intercept                                                                  10.2644      0.070    147.411      0.000      10.128      10.401
+C(Gender, Treatment(reference="Female"))[T.Male]                            0.0549      0.028      1.944      0.053      -0.001       0.110
+C(Gender, Treatment(reference="Female"))[T.Other]                          -0.1600     48.854     -0.003      0.997     -96.193      95.873
+C(Education, Treatment(reference="High School"))[T.Bachelor]                0.6185      0.062      9.933      0.000       0.496       0.741
+C(Education, Treatment(reference="High School"))[T.Master]                  0.8575      0.079     10.822      0.000       0.702       1.013
+C(Education, Treatment(reference="High School"))[T.PhD]                     1.0627      0.140      7.607      0.000       0.788       1.337
+Agec                                                                       -0.0078      0.007     -1.178      0.240      -0.021       0.005
+Agec2                                                                      -0.0009      0.000     -2.640      0.009      -0.002      -0.000
+Experience                                                                  0.0827      0.007     11.326      0.000       0.068       0.097
+C(Education, Treatment(reference="High School"))[T.Bachelor]:Experience    -0.0034      0.008     -0.420      0.674      -0.019       0.013
+C(Education, Treatment(reference="High School"))[T.Master]:Experience      -0.0199      0.007     -2.960      0.003      -0.033      -0.007
+C(Education, Treatment(reference="High School"))[T.PhD]:Experience         -0.0291      0.009     -3.143      0.002      -0.047      -0.011
+==============================================================================
+Omnibus:                        8.885   Durbin-Watson:                   1.674
+Prob(Omnibus):                  0.012   Jarque-Bera (JB):                8.817
+Skew:                           0.338   Prob(JB):                       0.0122
+Kurtosis:                       3.199   Cond. No.                     3.02e+03
+==============================================================================
+
+Notes:
+[1] Standard Errors are heteroscedasticity robust (HC3)
+[2] The condition number is large, 3.02e+03. This might indicate that there are
+strong multicollinearity or other numerical problems.\end{verbatim}
+
+\subsection{Appendix D: Outlier Report (Filtered)}
 \begin{table}[htpb]
 \centering
 \scriptsize
@@ -876,7 +961,7 @@ Experience & 0.0691 & 0.008 & 8.466 & 0.000 & [0.053, 0.085] \\
 \end{tabular}
 \end{table}
 
-\subsection{Appendix C: Python Source Code (Data Cleaning Pipeline)}
+\subsection{Appendix E: Python Source Code (Data Cleaning Pipeline)}
 The full analysis pipeline --- including descriptive statistics, visualisations, and diagnostic tests --- is available at:
 
 \begin{center}
@@ -929,7 +1014,7 @@ df.to_excel('Group13_DSEB66A_part1_cleaned.xlsx', index=False)
 print("Saved: Group13_DSEB66A_part1_cleaned.xlsx")
 \end{lstlisting}
 
-\subsection{Appendix D: Python Source Code (OLS Estimation with HC3)}
+\subsection{Appendix F: Python Source Code (OLS Estimation with HC3)}
 \begin{lstlisting}[language=Python,basicstyle=\ttfamily\scriptsize,breaklines=true]
 import pandas as pd
 import numpy as np
