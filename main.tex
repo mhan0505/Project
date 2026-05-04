@@ -327,31 +327,41 @@ The following base categories are defined for all dummy variable specifications:
   \item \textbf{Education Level:} High School (omitted reference group)
 \end{itemize}
 
-\textbf{Research hypotheses} (\textit{ceteris paribus}):
+Based on Human Capital Theory and prior empirical evidence, the following research hypotheses are formulated and will be tested at the 5\% significance level (\textit{ceteris paribus}):
 
-\bigskip
+\begin{itemize}[leftmargin=1.5em]
+  \item \textbf{H1: Returns to Experience}
+\end{itemize}
+$H_0: \beta_{\text{Exp}} = 0$ (Experience has no effect on salary)\\
+$H_1: \beta_{\text{Exp}} > 0$ (Experience increases salary)
 
-\textbf{H1 — Returns to Experience.}
-Professional experience is positively correlated with earnings, reflecting accumulated
-on-the-job human capital. This is expected to be statistically significant ($\beta_2 > 0$,
-$p < 0.05$) across all three models.
+\begin{itemize}[leftmargin=1.5em]
+  \item \textbf{H2: Education Premium} (Reference group: High School)
+\end{itemize}
+$H_0: \gamma_{\text{Bachelor}} = 0$ (A Bachelor's degree has no significant effect on salary compared to High School)\\
+$H_1: \gamma_{\text{Bachelor}} > 0$ (A Bachelor's degree increases salary)\\[0.5em]
+$H_0: \gamma_{\text{Master}} = 0$ (A Master's degree has no significant effect on salary compared to High School)\\
+$H_1: \gamma_{\text{Master}} > 0$ (A Master's degree increases salary)\\[0.5em]
+$H_0: \gamma_{\text{PhD}} = 0$ (A PhD degree has no significant effect on salary compared to High School)\\
+$H_1: \gamma_{\text{PhD}} > 0$ (A PhD degree increases salary)
 
-\textbf{H2 — Education Premium.}
-Higher education levels (Bachelor, Master, PhD) yield significantly higher earnings
-compared to the High School baseline. Returns are hypothesised to be monotonically
-increasing with attainment level, consistent with human capital theory \citep{becker1964}.
+\begin{itemize}[leftmargin=1.5em]
+  \item \textbf{H3: Non-Linear Age Effects} (Quadratic Term of Age, Model 3 only)
+\end{itemize}
+$H_0: \beta_{\text{Age}_c^2} = 0$ (No diminishing returns to age)\\
+$H_1: \beta_{\text{Age}_c^2} < 0$ (Diminishing returns to age exist, forming an inverted U-shape)
 
-\textbf{H3 — Non-Linear Age Effects.}
-Age exhibits an inverted U-shape relationship with earnings, with positive returns in
-early career stages and diminishing marginal returns at later stages. This hypothesis is
-testable \textit{exclusively} in Model~3 via the coefficient on $\text{Age}_c^2$
-(expected: $\beta_2 < 0$, $p < 0.05$).
+\begin{itemize}[leftmargin=1.5em]
+  \item \textbf{H4: Conditional Returns to Experience by Education} (Interaction Terms, Model 3 only)
+\end{itemize}
+$H_0: \delta_j = 0$ (Returns to experience are the same regardless of education level)\\
+$H_1: \delta_j > 0$ (Higher education levels yield steeper returns to experience)
 
-\textbf{H4 — Conditional Returns to Experience by Education.}
-The returns to experience are conditional on education level, with higher-attainment
-groups potentially exhibiting steeper wage growth trajectories. This is testable in
-Model~3 via the interaction terms $(\text{Edu}_j \times \text{Exp})$; a positive and
-significant $\hat{\delta}_j$ for higher education groups would support H4.
+\begin{itemize}[leftmargin=1.5em]
+  \item \textbf{Gender Differences}
+\end{itemize}
+$H_0: \beta_{\text{Gender}} = 0$ (No significant salary difference between males and females)\\
+$H_1: \beta_{\text{Gender}} \neq 0$ (Male and female employees earn different salaries)
 
 % ══════════════════════════════════════════════════════════════════════════════
 \section{Descriptive Statistics}
