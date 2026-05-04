@@ -2,20 +2,12 @@
 
 This repository contains the full research project, data pipeline, and LaTeX source code for an econometric study on salary determinants using the Mincer Wage Equation framework.
 
-## 📌 Project Overview
+## Project Overview
 The objective of this research is to quantify the returns to human capital investments (education and experience) and investigate demographic wage differentials. The study employs Ordinary Least Squares (OLS) estimation with HC3 robust standard errors to ensure reliable inference in the presence of heteroskedasticity.
-
-### 👥 Team Members (Group 13 - DSEB 66A)
-- **Ly Ngoc Thuy Duong**
-- **Nguyen Quoc Cuong**
-- **Nguyen Duc Hieu**
-- **Hoa Hoang Anh**
-
-**Lecturers:** Mr. Nguyen Manh The, Ms. Nguyen Thi Thuy Trang
 
 ---
 
-## 🛠 Repository Structure
+## Repository Structure
 The project is organized into modular stages reflecting the econometric workflow:
 
 - `1.Data Cleaning/`: Scripts for deduplication, standardisation of education levels, and feature engineering.
@@ -30,7 +22,7 @@ The project is organized into modular stages reflecting the econometric workflow
 
 ---
 
-## 🔬 Methodology & Model Specification
+## Methodology & Model Specification
 Following the **Mincer Wage Equation (1974)**, our preferred specification is:
 
 $$\ln(\text{Salary}) = \beta_0 + \beta_1 \text{Education} + \beta_2 \text{Experience} + \text{Controls} + \varepsilon$$
@@ -43,7 +35,7 @@ $$\ln(\text{Salary}) = \beta_0 + \beta_1 \text{Education} + \beta_2 \text{Experi
 
 ---
 
-## 🚀 How to Reproduce the Results
+## How to Reproduce the Results
 
 ### 1. Requirements
 Ensure you have Python installed with the following libraries:
@@ -66,14 +58,14 @@ The final report is written in LaTeX. Open `main.tex` in an editor like Overleaf
 
 ---
 
-## 📊 Key Diagnostic Results
+## Key Diagnostic Results
 - **Normality**: Model 2 passes the Jarque-Bera test ($p = 0.912$).
 - **Heteroskedasticity**: All models exhibit heteroskedasticity; thus, **HC3 Robust Standard Errors** are used for all reported results.
 - **Multicollinearity**: Managed via mean-centring in Model 3.
 
 ---
 
-## 📂 Data Source
+## Data Source
 The analysis is based on a sample of $n=425$ observations derived from the `Salary_Data.xlsx` dataset, focusing on professionals across various education levels and years of experience.
 
 ---
