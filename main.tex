@@ -246,13 +246,11 @@ meaningful improvements in model fit.
 A baseline linear model investigating absolute salary changes:
 
 \begin{equation}
-  \text{Salary} = \beta_0 + \beta_1\,\text{Age} + \beta_2\,\text{Exp}
-    + \beta_3\,\text{Gender}
-    + \sum_{j}\gamma_j\,\text{Education}_j + u
+  \text{Salary}_i = \beta_0 + \beta_1\,\text{Age}_i + \beta_2\,\text{Exp}_i + \beta_3\,\text{Gender}_i + \beta_4\,\text{Education}_i + u_i
   \label{eq:m1}
 \end{equation}
 
-This model establishes a benchmark and is interpretable in levels (USD). Its primary
+Where $i$ denotes the individual observation, and $\text{Gender}_i$ and $\text{Education}_i$ represent the sets of dummy variables for categorical characteristics. This model establishes a benchmark and is interpretable in levels (USD). Its primary
 limitation is the assumption of a linear, additive salary structure, which is unlikely to
 hold given the well-documented right-skewness of wage distributions.
 
@@ -262,9 +260,7 @@ hold given the well-documented right-skewness of wage distributions.
 Our primary specification, examining percentage changes in salary:
 
 \begin{equation}
-  \ln(\text{Salary}) = \beta_0 + \beta_1\,\text{Age} + \beta_2\,\text{Exp}
-    + \beta_3\,\text{Gender}
-    + \sum_{j}\gamma_j\,\text{Education}_j + u
+  \ln(\text{Salary}_i) = \beta_0 + \beta_1\,\text{Age}_i + \beta_2\,\text{Exp}_i + \beta_3\,\text{Gender}_i + \beta_4\,\text{Education}_i + u_i
   \label{eq:m2}
 \end{equation}
 
@@ -284,21 +280,15 @@ experience by education level:
 
 \begin{equation}
 \begin{aligned}
-  \ln(\text{Salary}) ={}& \beta_0
-    + \beta_1\,\text{Age}_c
-    + \beta_2\,\text{Age}_c^2
-    + \beta_3\,\text{Exp}
-    + \beta_4\,\text{Gender} \\
-    &+ \sum_{j}\gamma_j\,\text{Edu}_j
-    + \sum_{j}\delta_j\,(\text{Edu}_j \times \text{Exp})
-    + u
+  \ln(\text{Salary}_i) ={}& \beta_0 + \beta_1\,\text{Age}_{c,i} + \beta_2\,\text{Age}_{c,i}^2 + \beta_3\,\text{Exp}_i + \beta_4\,\text{Gender}_i \\
+    &+ \beta_5\,\text{Education}_i + \beta_6\,(\text{Education}_i \times \text{Exp}_i) + u_i
 \end{aligned}
   \label{eq:m3}
 \end{equation}
 
 The inclusion of $\text{Age}_c^2$ allows the earnings--age profile to take an inverted
 U-shape, consistent with life-cycle human capital theory \citep{benporath1967}. The
-interaction terms $(\text{Edu}_j \times \text{Exp})$ allow the marginal return to
+interaction terms $(\text{Education}_i \times \text{Exp}_i)$ allow the marginal return to
 experience to differ by education level, directly testing whether higher-educated workers
 exhibit steeper earnings trajectories (H4).
 
