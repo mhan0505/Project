@@ -350,8 +350,8 @@ $H_1: \gamma_{\text{PhD}} > 0$ (A PhD degree increases salary)
 \begin{itemize}[leftmargin=1.5em]
   \item \textbf{H3: Non-Linear Age Effects} (Quadratic Term of Age, Model 3 only)
 \end{itemize}
-$H_0: \beta_{\text{Age}_c^2} = 0$ (No diminishing returns to age)\\
-$H_1: \beta_{\text{Age}_c^2} < 0$ (Diminishing returns to age exist, forming an inverted U-shape)
+$H_0: \beta_{\text{Age}_c} = \beta_{\text{Age}_c^2} = 0$ (Age has no impact on salary)\\
+$H_1: \beta_{\text{Age}_c} > 0$ and $\beta_{\text{Age}_c^2} < 0$ (Salary increases with age but at a diminishing rate)
 
 \begin{itemize}[leftmargin=1.5em]
   \item \textbf{H4: Conditional Returns to Experience by Education} (Interaction Terms, Model 3 only)
@@ -566,7 +566,7 @@ Gender becomes statistically significant in this model. The coefficient on the m
 \vspace{1em}
 \textbf{Model 3 (Extended Log Model)}\\
 Model 3 introduces nonlinear age effects and interaction terms.
-The squared age term (\(\text{Age}_c^2\)) is negative and statistically significant, indicating a concave relationship between age and log salary within this specification. Although the linear term $\text{Age}_c$ is not individually significant, a joint F-test for $H_0\!: \beta_{\text{Age}_c} = \beta_{\text{Age}_c^2} = 0$ yields $F(2, 413) = 10.30$ ($p < 0.001$), confirming that the age polynomial jointly contributes significant explanatory power. The age profile should therefore be interpreted based on the joint test rather than the individual coefficient alone.
+The squared age term (\(\text{Age}_c^2\)) is negative and statistically significant, indicating a concave relationship between age and log salary within this specification. Although the linear term $\text{Age}_c$ is not individually significant, a joint F-test for $H_0\!: \beta_{\text{Age}_c} = \beta_{\text{Age}_c^2} = 0$ yields $F(2, 413) = 3.90$ ($p = 0.021$), confirming that the age polynomial jointly contributes significant explanatory power at the 5\% level. The age profile should therefore be interpreted based on the joint test rather than the individual coefficient alone.
 Years of experience remains strongly positive and significant (approximately 8.27\% per additional year for the baseline education group).
 The interaction terms suggest that:
 \begin{itemize}
@@ -628,6 +628,9 @@ Overall, while multicollinearity is present---especially in Model 3---it is not 
 \midrule
 Age / Age\_c & 8.69 & 8.69 & 9.22 \\
 Experience & 8.80 & 8.80 & 24.21 \\
+Bachelor & 3.97 & 3.97 & 5.12 \\
+Master & 4.01 & 4.01 & 6.84 \\
+PhD & 3.84 & 3.84 & 9.15 \\
 Age2\_c & --- & --- & 2.38 \\
 Exp \(\times\) PhD & --- & --- & 27.95 \\
 Exp \(\times\) Master & --- & --- & 14.98 \\
@@ -643,7 +646,7 @@ This implies that the variance of the error term is not constant, which may leav
 
 As a correction strategy, HC3 heteroskedasticity-robust standard errors are applied rather than Weighted Least Squares (WLS). This choice is deliberate: WLS requires a correctly specified variance function $\text{Var}(u_i | \mathbf{x}_i) = \sigma^2 h(\mathbf{x}_i)$ which is not known a priori in this setting. Misspecifying the weights in WLS can introduce bias that may exceed the efficiency gains it provides \citep{wooldridge2010}. HC3 robust inference, by contrast, remains valid without assuming a particular form of heteroskedasticity. Table~\ref{tab:se_compare} illustrates the impact on the standard errors of Model~1.
 
-\textbf{Note on the ``Other'' gender category:} A single observation ($n = 1$) in the ``Other'' gender group generates a near-singular sub-matrix, which is why the HC3 standard error for this coefficient in Model~2 is extremely large (SE $= 58.857$). This coefficient is effectively uninformative and should not be used for inference. In a larger sample, this group would either be adequately represented or merged with a reference category.
+\textbf{Note on the ``Other'' gender category:} A single observation ($n = 1$) in the ``Other'' gender group generates a near-singular sub-matrix, which is why the HC3 standard error for this coefficient in Model~2 is extremely large (SE $= 60.000$). This coefficient is effectively uninformative and should not be used for inference. In a larger sample, this group would either be adequately represented or merged with a reference category.
 
 \begin{table}[htpb]
 \centering
@@ -822,11 +825,6 @@ Mincer, J. (1974).
 \newblock \textit{Schooling, Experience and Earnings}.
 \newblock National Bureau of Economic Research.
 
-\bibitem[Spence(1973)]{spence1973}
-Spence, M. (1973).
-\newblock Job market signalling.
-\newblock \textit{Quarterly Journal of Economics}, 87(3), 355--374.
-
 \bibitem[Wooldridge(2010)]{wooldridge2010}
 Wooldridge, J.~M. (2010).
 \newblock \textit{Econometric Analysis of Cross Section and Panel Data} (2nd
@@ -841,7 +839,7 @@ Wooldridge, J.~M. (2010).
 \section{Supplementary Materials}
 \label{app:supp}
 
-\subsection{Appendix A: Model 1 (Linear) Summary Output}
+\subsection{Model 1 (Linear) Summary Output}
 
 \noindent\textbf{SUMMARY OUTPUT}\\[0.4em]
 \textit{Dependent variable: Salary (USD). Base categories: Female, High School. HC3 robust standard errors.}
@@ -871,7 +869,8 @@ Regression & 7 & 824,120,516,974.71 & 117,731,502,424.96 & 136.87 & 0.0000 \\
 Residual   & 417 & 358,678,489,624.50 & 860,140,262.89 & & \\
 Total      & 424 & 1,182,799,006,599.21 & & & \\
 \bottomrule
-\end{tabular}
+\end{tabular}\\
+\textit{Note: This OLS ANOVA table reports the non-robust F-statistic (136.87). The Regression Statistics table above reports the HC3-robust F-statistic (263.21) used for inference.}
 \end{table}
 
 \begin{table}[H]
@@ -894,7 +893,7 @@ Years of Experience &  7,182.80 &    837.38 &  8.5777 & 0.0000 &  5,536.78 &  8,
 \end{table}
 
 % ─────────────────────────────────────────────────────────────────────────────
-\subsection{Appendix B: Model 2 (Semi-Log) Summary Output}
+\subsection{Model 2 (Semi-Log) Summary Output}
 
 \noindent\textbf{SUMMARY OUTPUT}\\[0.4em]
 \textit{Dependent variable: ln(Salary). Base categories: Female, High School. HC3 robust standard errors.}
@@ -924,7 +923,8 @@ Regression & 7 & 93.0766 & 13.2967 & 148.2380 & 0.0000 \\
 Residual   & 417 & 37.4041 & 0.0897 & & \\
 Total      & 424 & 130.4807 & & & \\
 \bottomrule
-\end{tabular}
+\end{tabular}\\
+\textit{Note: This OLS ANOVA table reports the non-robust F-statistic (148.24). The Regression Statistics table above reports the HC3-robust F-statistic (158.11) used for inference.}
 \end{table}
 
 \begin{table}[H]
@@ -947,7 +947,7 @@ Years of Experience &  0.0691 & 0.0082 &  8.4665 & 0.0000 &  0.0531 &  0.0852 \\
 \end{table}
 
 % ─────────────────────────────────────────────────────────────────────────────
-\subsection{Appendix C: Model 3 (Quadratic -- Final) Summary Output}
+\subsection{Model 3 (Quadratic -- Final) Summary Output}
 
 \noindent\textbf{SUMMARY OUTPUT}\\[0.4em]
 \textit{Dependent variable: ln(Salary). Base categories: Female, High School. HC3 robust standard errors.}
@@ -1004,7 +1004,7 @@ PhD $\times$ Exp         & -0.0291 & 0.0093 &  -3.1427 & 0.0018 & -0.0474 & -0.0
 \end{table}
 
 
-\subsection{Appendix D: Outlier Report (Filtered)}
+\subsection{Outlier Report (Filtered)}
 \begin{table}[htpb]
 \centering
 \scriptsize
@@ -1018,7 +1018,7 @@ PhD $\times$ Exp         & -0.0291 & 0.0093 &  -3.1427 & 0.0018 & -0.0474 & -0.0
 \end{tabular}
 \end{table}
 
-\subsection{Appendix E: Python Source Code (Data Cleaning Pipeline)}
+\subsection{Python Source Code (Data Cleaning Pipeline)}
 The full analysis pipeline --- including descriptive statistics, visualisations, and diagnostic tests --- is available at:
 
 \begin{center}
@@ -1071,7 +1071,7 @@ df.to_excel('Group13_DSEB66A_part1_cleaned.xlsx', index=False)
 print("Saved: Group13_DSEB66A_part1_cleaned.xlsx")
 \end{lstlisting}
 
-\subsection{Appendix F: Python Source Code (OLS Estimation with HC3)}
+\subsection{Python Source Code (OLS Estimation with HC3)}
 \begin{lstlisting}[language=Python,basicstyle=\ttfamily\scriptsize,breaklines=true]
 import pandas as pd
 import numpy as np
@@ -1125,6 +1125,10 @@ q = m3.df_model - m2.df_model
 F = ((RSS2 - RSS3)/q) / (RSS3/(len(df) - m3.df_model - 1))
 p = 1 - stats.f.cdf(F, q, len(df) - m3.df_model - 1)
 print(f'F-test M2 vs M3: F({int(q)},{int(len(df)-m3.df_model-1)}) = {F:.4f}, p = {p:.6f}')
+
+# --- Joint F-test for Age terms in Model 3 ---
+f_age = m3.f_test("Agec = 0, Agec2 = 0")
+print(f'Joint test Age: F({f_age.df_num},{f_age.df_denom}) = {f_age.fvalue:.4f}, p = {f_age.pvalue:.4f}')
 \end{lstlisting}
 
 \end{document}
